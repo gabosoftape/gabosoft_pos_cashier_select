@@ -149,7 +149,7 @@ odoo.define('pos_choosing_cashier', function(require){
                 var user = this.pos.users[i];
                 var id;
                 console.log(user);
-                if (user[i].role == "cashier") {
+                if (user.role === "cashier") {
                     list.push({
                         'label': user.name,
                         'item':  user,
