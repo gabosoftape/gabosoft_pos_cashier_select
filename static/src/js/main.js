@@ -165,7 +165,7 @@ odoo.define('pos_choosing_cashier', function(require){
             var list = [];
             for (var i = 0; i < this.pos.users.length; i++) {
                 var user = this.pos.users[i];
-                if (options.only_users || user.role === 'user') {
+                if (!options.only_managers || user.role === 'manager') {
                     list.push({
                         'label': user.name,
                         'item':  user,
@@ -176,7 +176,7 @@ odoo.define('pos_choosing_cashier', function(require){
                 ? 'cashier'
                 : 'selection');
             this.show_popup(popup_type,{
-                'title': options.title || _t('Selecciona Vendedor'),
+                'title': options.title || _t('Select User'),
                 list: list,
                 confirm: function(_user){
                     // switches cashier on cashier state screen property to false on user confirmation
